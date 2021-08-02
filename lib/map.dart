@@ -6,7 +6,9 @@ import 'path.dart';
 import 'weather.dart';
 import 'package:flutter/material.dart';
 
-
+//intial and the final locations(_center will be updated when we call getCurrentLocation() function)
+LatLng _center = LatLng(17.437462,78.448288);
+LatLng _des = LatLng(double.parse(inlat),double.parse(inlon));
 
 class Map extends StatefulWidget {
   
@@ -24,17 +26,18 @@ class Map extends StatefulWidget {
   final Set<Marker> markers = {};    
   var data;
 
-  //intial and the final locations(_center will be updated when we call getCurrentLocation() function)
-  LatLng _center = LatLng(17.437462,78.448288);
-  LatLng _des = LatLng(double.parse(inlat),double.parse(inlon));
+  
+  
+  
 
   static final CameraPosition _InitialPosition =
       CameraPosition(target:LatLng(17.437462,78.448288), zoom: 11.0, tilt: 0, bearing: 0);
 
 
   void _onMapCreated(GoogleMapController controller) {
-    
     getCurrentLocation();
+    getJsonData();
+    
     mapController = controller;
     setMarkers();
   }
@@ -45,11 +48,13 @@ class Map extends StatefulWidget {
   void getCurrentLocation()async{
     try{
     Position res = await Geolocator.getCurrentPosition();
+    
     CameraPosition cameraPosition= new CameraPosition(target:LatLng(res.latitude,res.longitude),zoom: 11);
     mapController.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
     setState(() {
       _center=LatLng(res.latitude,res.longitude);
       errorMessage="";
+      
     });}catch (error) {
     setState(() {   
       errorMessage=error.toString();
@@ -80,7 +85,7 @@ class Map extends StatefulWidget {
       endLat: _des.latitude,
       endLog: _des.longitude,
     );
-
+    print(_center.latitude);
     try {
       // getData() returns a json Decoded data
       data = await path.getData();
@@ -113,8 +118,7 @@ class Map extends StatefulWidget {
   @override
   void initState() {
     super.initState();
-
-    getJsonData();
+    
   }
   
   @override
