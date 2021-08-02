@@ -1,6 +1,6 @@
 # Weather App
 
-A mobile application(android and IOS) version of [meteo](https://weathersearchnow.netlify.app/) 
+A mobile application(android and iOS) version of [meteo](https://weathersearchnow.netlify.app/) 
 with an added map feature
 
 Enter the city name and find out
