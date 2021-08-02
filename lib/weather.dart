@@ -14,10 +14,11 @@ class WeatherApp extends StatefulWidget {
 
 class _WeatherAppState extends State<WeatherApp> {
   String city="Mumbai";
-  dynamic temperature=0;
+  dynamic temperature=30;
   String des="Clear";
   String errorMessage = '';
 
+  //getting cuurent weather data using openweathermap.api and updating
   void getData(String input) async{
     try{
    var url=Uri.parse("https://api.openweathermap.org/data/2.5/weather?q="+input+"&appid=7ea3a2790eb7c209c8ec9992f1c736cc");
@@ -59,12 +60,12 @@ class _WeatherAppState extends State<WeatherApp> {
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
             child: Icon(Icons.pin_drop_sharp,color: Colors.red,),
+            focusColor: Colors.lightBlue,
             onPressed:(){
               Navigator.pushNamed(context, '/Map');
             } ,
             backgroundColor:Colors.white),
               backgroundColor: Colors.transparent,
-              //backgroundColor: Colors.grey.withOpacity(0.8),
               body: 
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -109,21 +110,21 @@ class _WeatherAppState extends State<WeatherApp> {
                         style: TextStyle(color: Colors.white, fontSize: 25.0),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 30),
                     Center(
                       child: Text(
                         date,
                         style: TextStyle(color: Colors.white, fontSize: 20.0),
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 15),
                     Center(
                       child: Text(
                         temperature.toString() + ' °C',
                         style: TextStyle(color: Colors.white, fontSize: 67.0),
                       ),
                     ),
-                    
+                    SizedBox(height: 10),
                     Center(
                       child: Text(
                         des,

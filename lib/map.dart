@@ -14,7 +14,8 @@ class Map extends StatefulWidget {
   _MapState createState() => _MapState();
 }
 
-class _MapState extends State<Map> {
+  //setting google map
+  class _MapState extends State<Map> {
   late GoogleMapController mapController;
   String errorMessage="";
 
@@ -23,7 +24,7 @@ class _MapState extends State<Map> {
   final Set<Marker> markers = {};    
   var data;
 
-
+  //intial and the final locations(_center will be updated when we call getCurrentLocation() function)
   LatLng _center = LatLng(17.437462,78.448288);
   LatLng _des = LatLng(double.parse(inlat),double.parse(inlon));
 
@@ -40,7 +41,7 @@ class _MapState extends State<Map> {
 
   var geoLocator=Geolocator();
 
-
+  //getting users current location
   void getCurrentLocation()async{
     try{
     Position res = await Geolocator.getCurrentPosition();
@@ -57,42 +58,33 @@ class _MapState extends State<Map> {
   }
   }
 
+  //setting markers(location pins)
   setMarkers() {
   markers.add(Marker(
     markerId: MarkerId("Current location"),
     position: LatLng(_center.latitude,_center.longitude),
-    infoWindow: InfoWindow(
-      title: "Home",
-      snippet: "Home Sweet Home",
-    ),
   ),
   );
   markers.add(Marker(
     markerId: MarkerId("Destination"),
     position: LatLng(_des.latitude,_des.longitude),
-    infoWindow: InfoWindow(
-      title: "Masjid",
-      snippet: "5 star rated place",
-    ),
   ));
   setState(() {});
   }
 
+  //getting data using path.dart and adding polylines
   void getJsonData() async {
-
-
-    NetworkHelper network = NetworkHelper(
+      getPath path = getPath(
       startLat: _center.latitude,
-      startLng: _center.longitude,
+      startLog: _center.longitude,
       endLat: _des.latitude,
-      endLng: _des.longitude,
+      endLog: _des.longitude,
     );
 
     try {
       // getData() returns a json Decoded data
-      data = await network.getData();
-
-      // We can reach to our desired JSON data manually as following
+      data = await path.getData();
+      // Reaching JSON data manually 
       LineString ls =
           LineString(data['features'][0]['geometry']['coordinates']);
 
@@ -130,7 +122,7 @@ class _MapState extends State<Map> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(""),
+          title: Text("Map"),
         
           backgroundColor: Colors.blue[800],
         ),
