@@ -1,7 +1,9 @@
 # Weather App
 
 A [mobile application](https://drive.google.com/file/d/1FEjmI7DV8XKWpiUFFkatGT-qGuPZLMCb/view)(android and iOS) version of [meteo](https://weathersearchnow.netlify.app/) 
-with an added map feature
+with an added map feature.
+
+This flutter application (works on both android and iOS) uses *GoogleMaps* to show the location and used *openrouteservice* to show the path(polyline) between the user and the input(city name) in addition to the *OpenWeatherMap.api* which is used to get weather data .
 
 Enter the city name and find out
 
