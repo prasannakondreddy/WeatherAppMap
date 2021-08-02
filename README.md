@@ -1,16 +1,23 @@
-# weather_flut
+# Weather App
 
-A new Flutter project.
+A mobile application(android and IOS) version of [meteo](https://weathersearchnow.netlify.app/) 
+with an added map feature
 
-## Getting Started
+Enter the city name and find out
 
-This project is a starting point for a Flutter application.
+- the temperature
 
-A few resources to get you started if this is your first Flutter project:
+- weather condition
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- changes the background accordingly
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- click on the map pin icon to find out a path from your current location to the city
+
+<p float="left">
+  <img src="images/loc1sol.jpg" width="300" />
+  <img src="images/loc2sol.jpg"  width="300" /> 
+   
+</p>
+<img src="images/mapsol.jpg"  width="300" />
+
+
