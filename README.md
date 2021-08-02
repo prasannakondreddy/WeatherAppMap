@@ -18,6 +18,9 @@ Enter the city name and find out
   <img src="images/loc2sol.jpg"  width="300" /> 
    
 </p>
+
+Map from users current location to input city
+
 <img src="images/mapsol.jpg"  width="300" />
 
 
